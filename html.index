@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANVI REALTORS · Real Estate</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* header / nav */
+    .navbar {
+      background: #0b2a4a;
+      color: white;
+      padding: 16px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo h1 i {
+      color: #fbbf24;
+      margin-right: 6px;
+    }
+
+    .logo span {
+      font-weight: 300;
+      font-size: 0.9rem;
+      display: block;
+      color: #94a3b8;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #fbbf24;
+      border-bottom-color: #fbbf24;
+    }
+
+    /* hero section */
+    .hero {
+      background: linear-gradient(135deg, #0b2a4a 0%, #1a4b6d 100%);
+      color: white;
+      padding: 60px 0 70px;
+      margin-bottom: 40px;
+      border-radius: 0 0 40px 40px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-text {
+      flex: 1 1 300px;
+    }
+
+    .hero-text h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-text h2 i {
+      color: #fbbf24;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin: 16px 0 24px;
+      opacity: 0.9;
+    }
+
+    .contact-badge {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      padding: 18px 24px;
+      border-radius: 60px;
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .contact-badge i {
+      color: #fbbf24;
+      margin-right: 8px;
+    }
+
+    .hero-image {
+      flex: 1 1 280px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      background: #d9e2ef;
+      padding: 4px;
+      height: auto;
+    }
+
+    /* cards / sections */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 48px 0 24px;
+      color: #0b2a4a;
+      border-left: 6px solid #fbbf24;
+      padding-left: 18px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 28px;
+      margin: 24px 0 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      transition: 0.2s;
+      border: 1px solid #e9edf2;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+    }
+
+    .card i {
+      font-size: 2.6rem;
+      color: #0b2a4a;
+      background: #eef3f9;
+      padding: 16px;
+      border-radius: 60px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      color: #475569;
+    }
+
+    .address-block {
+      background: white;
+      border-radius: 28px;
+      padding: 30px;
+      margin: 30px 0;
+      border: 1px solid #e9edf2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .address-block i {
+      color: #fbbf24;
+      width: 30px;
+    }
+
+    .footer {
+      background: #0b2a4a;
+      color: #cbd5e1;
+      padding: 48px 0 20px;
+      margin-top: 60px;
+      border-radius: 40px 40px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .footer a {
+      color: #94a3b8;
+      text-decoration: none;
+      display: block;
+      margin: 6px 0;
+      transition: 0.2s;
+    }
+
+    .footer a:hover {
+      color: #fbbf24;
+    }
+
+    .footer .social i {
+      font-size: 1.4rem;
+      margin-right: 14px;
+      color: #94a3b8;
+      transition: 0.2s;
+    }
+
+    .footer .social i:hover {
+      color: #fbbf24;
+    }
+
+    .copy {
+      border-top: 1px solid #1e3a5a;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .copy span {
+      color: #fbbf24;
+    }
+
+    /* page sections (hidden by default) */
+    .page-section {
+      display: none;
+      animation: fade 0.3s ease;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    /* about page extra */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      background: white;
+      border-radius: 28px;
+      padding: 30px;
+      border: 1px solid #e9edf2;
+    }
+
+    .about-grid img {
+      flex: 1 1 200px;
+      border-radius: 24px;
+      max-width: 100%;
+      background: #d9e2ef;
+    }
+
+    .about-text {
+      flex: 2 1 300px;
+    }
+
+    .privacy-terms {
+      background: white;
+      border-radius: 28px;
+      padding: 30px;
+      border: 1px solid #e9edf2;
+    }
+
+    .privacy-terms h3 {
+      color: #0b2a4a;
+      margin: 24px 0 10px;
+    }
+
+    .contact-page {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      background: white;
+      border-radius: 28px;
+      padding: 30px;
+      border: 1px solid #e9edf2;
+    }
+
+    .contact-details {
+      flex: 1 1 240px;
+    }
+
+    .contact-details i {
+      width: 32px;
+      color: #fbbf24;
+    }
+
+    .contact-image {
+      flex: 1 1 200px;
+      text-align: center;
+    }
+
+    .contact-image img {
+      max-width: 100%;
+      border-radius: 24px;
+      background: #d9e2ef;
+    }
+
+    /* small */
+    @media (max-width: 700px) {
+      .navbar .container {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 14px;
+      }
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+      .contact-badge {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        border-radius: 28px;
+      }
+      .address-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">
+      <h1><i class="fas fa-building"></i> ANVI REALTORS</h1>
+      <span>REAL ESTATE · TRUST · EXCELLENCE</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#" data-page="about"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="#" data-page="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#" data-page="privacy"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+      <li><a href="#" data-page="terms"><i class="fas fa-file-contract"></i> Terms</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+
+  <!-- HOME PAGE -->
+  <section id="home" class="page-section active">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h2><i class="fas fa-key"></i> Your Dream Home <br>Starts Here</h2>
+          <p>ANVI REALTORS — premium real estate services in Diva, Mumbai. Trusted by families & investors.</p>
+          <div class="contact-badge">
+            <span><i class="fas fa-phone-alt"></i> 9022216667</span>
+            <span><i class="fas fa-envelope"></i> anvirealtorsdata@gmail.com</span>
+            <span><i class="fas fa-map-pin"></i> Diva East, MH</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <!-- professional real estate image (placeholder) -->
+          <img src="https://placehold.co/600x400/1a4b6d/white?text=ANVI+REALTORS" alt="ANVI REALTORS property">
+        </div>
+      </div>
+    </div>
+
+    <!-- highlights -->
+    <div class="card-grid">
+      <div class="card"><i class="fas fa-home"></i><h3>Residential</h3><p>Flats, bungalows, and premium apartments.</p></div>
+      <div class="card"><i class="fas fa-store"></i><h3>Commercial</h3><p>Office spaces, shops, and investments.</p></div>
+      <div class="card"><i class="fas fa-handshake"></i><h3>Trusted</h3><p>10+ years of excellence in real estate.</p></div>
+      <div class="card"><i class="fas fa-map-marked-alt"></i><h3>Prime Location</h3><p>Diva, Mumbra & Thane region.</p></div>
+    </div>
+
+    <!-- address -->
+    <div class="address-block">
+      <div><i class="fas fa-location-dot"></i> <strong>Office:</strong> Room No 202 C Wing, Samarth Nagar, Shree Stapatya Apt, Diva Mumbra Devi Colony Road, Diva East, Maharashtra 400612</div>
+      <div><i class="fas fa-clock"></i> Mon-Sat 10:00 AM – 7:00 PM</div>
+    </div>
+  </section>
+
+  <!-- ABOUT PAGE -->
+  <section id="about" class="page-section">
+    <h2 class="section-title"><i class="fas fa-info-circle"></i> About ANVI REALTORS</h2>
+    <div class="about-grid">
+      <img src="https://placehold.co/400x400/1a4b6d/white?text=ANVI+REALTORS" alt="About ANVI">
+      <div class="about-text">
+        <h3>Building Dreams, Delivering Trust</h3>
+        <p>ANVI REALTORS is a premier real estate firm based in Diva East, Mumbai. With a deep understanding of the local market, we offer residential and commercial properties that match your aspirations.</p>
+        <p>Our team is dedicated to transparency, integrity, and client satisfaction. Whether you are buying, selling, or investing, we provide end-to-end support.</p>
+        <p><i class="fas fa-check-circle" style="color:#fbbf24;"></i> 10+ years of experience <br>
+        <i class="fas fa-check-circle" style="color:#fbbf24;"></i> 500+ happy families <br>
+        <i class="fas fa-check-circle" style="color:#fbbf24;"></i> Expert legal & financial guidance</p>
+        <p><strong>📍 Address:</strong> Room No 202 C Wing, Samarth Nagar, Shree Stapatya Apt, Diva Mumbra Devi Colony Road, Diva East, Maharashtra 400612</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT PAGE -->
+  <section id="contact" class="page-section">
+    <h2 class="section-title"><i class="fas fa-address-card"></i> Contact Us</h2>
+    <div class="contact-page">
+      <div class="contact-details">
+        <h3>Get in touch</h3>
+        <p><i class="fas fa-phone-alt"></i> <strong>9022216667</strong></p>
+        <p><i class="fas fa-envelope"></i> anvirealtorsdata@gmail.com</p>
+        <p><i class="fas fa-map-pin"></i> Room No 202 C Wing, Samarth Nagar,<br> Shree Stapatya Apt, Diva Mumbra Devi Colony Road,<br> Diva East, Maharashtra 400612</p>
+        <p><i class="fas fa-clock"></i> Mon–Sat: 10:00 AM – 7:00 PM</p>
+        <div style="margin-top: 16px;">
+          <i class="fab fa-facebook" style="font-size:1.8rem; margin-right:12px; color:#0b2a4a;"></i>
+          <i class="fab fa-instagram" style="font-size:1.8rem; margin-right:12px; color:#0b2a4a;"></i>
+          <i class="fab fa-youtube" style="font-size:1.8rem; color:#0b2a4a;"></i>
+        </div>
+      </div>
+      <div class="contact-image">
+        <img src="https://placehold.co/400x300/1a4b6d/white?text=Contact+ANVI" alt="Contact ANVI REALTORS">
+        <p style="margin-top: 12px; font-style: italic; color:#475569;">We're here to help you find your dream property.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section id="privacy" class="page-section">
+    <h2 class="section-title"><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+    <div class="privacy-terms">
+      <p><strong>Last updated:</strong> 2026</p>
+      <p>At ANVI REALTORS, we take your privacy seriously. This policy describes how we collect, use, and protect your personal information.</p>
+      <h3>Information We Collect</h3>
+      <p>We may collect name, email address, phone number, and property preferences when you contact us or use our services.</p>
+      <h3>How We Use Information</h3>
+      <p>To respond to inquiries, provide property recommendations, and improve our services. We do not sell or share your data with third parties without consent.</p>
+      <h3>Data Security</h3>
+      <p>We implement industry-standard measures to safeguard your data. However, no method of transmission over the internet is 100% secure.</p>
+      <h3>Contact</h3>
+      <p>For privacy-related concerns, email us at anvirealtorsdata@gmail.com</p>
+    </div>
+  </section>
+
+  <!-- TERMS & CONDITIONS -->
+  <section id="terms" class="page-section">
+    <h2 class="section-title"><i class="fas fa-file-contract"></i> Terms & Conditions</h2>
+    <div class="privacy-terms">
+      <p><strong>Effective:</strong> 2026</p>
+      <p>By using the services of ANVI REALTORS, you agree to the following terms:</p>
+      <h3>1. Property Information</h3>
+      <p>All property details are provided in good faith. We recommend independent verification before any transaction.</p>
+      <h3>2. No Guarantee</h3>
+      <p>ANVI REALTORS does not guarantee the availability or accuracy of third-party listings. Prices and availability may change.</p>
+      <h3>3. User Responsibilities</h3>
+      <p>You agree to provide accurate information and use our services for lawful purposes only.</p>
+      <h3>4. Limitation of Liability</h3>
+      <p>ANVI REALTORS shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services.</p>
+      <h3>5. Governing Law</h3>
+      <p>These terms are governed by the laws of India, and any disputes shall be subject to the jurisdiction of Mumbai courts.</p>
+      <p>For full terms, contact us at anvirealtorsdata@gmail.com</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>ANVI REALTORS</h4>
+        <p style="color:#94a3b8;">Real estate solutions in Diva, Mumbra & Thane. Trust, transparency, and results.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#" data-page="home">Home</a>
+        <a href="#" data-page="about">About</a>
+        <a href="#" data-page="contact">Contact</a>
+        <a href="#" data-page="privacy">Privacy Policy</a>
+        <a href="#" data-page="terms">Terms & Conditions</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone" style="color:#fbbf24;"></i> 9022216667</p>
+        <p><i class="fas fa-envelope" style="color:#fbbf24;"></i> anvirealtorsdata@gmail.com</p>
+        <p><i class="fas fa-map-pin" style="color:#fbbf24;"></i> Diva East, Maharashtra 400612</p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <div class="social">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-youtube"></i>
+          <i class="fab fa-linkedin"></i>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      &copy; 2026 <span>ANVI REALTORS</span> · All rights reserved. Real Estate Excellence.
+    </div>
+  </div>
+</footer>
+
+<!-- page navigation script -->
+<script>
+  (function() {
+    // get all nav links (both header and footer quick links)
+    const navLinks = document.querySelectorAll('.nav-links a, .footer-grid a[data-page]');
+    const sections = {
+      home: document.getElementById('home'),
+      about: document.getElementById('about'),
+      contact: document.getElementById('contact'),
+      privacy: document.getElementById('privacy'),
+      terms: document.getElementById('terms')
+    };
+
+    function activatePage(pageId) {
+      // hide all sections
+      Object.values(sections).forEach(section => section.classList.remove('active'));
+      // show selected
+      if (sections[pageId]) sections[pageId].classList.add('active');
+      // update nav active class
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+        if (link.dataset.page === pageId) link.classList.add('active');
+      });
+      // scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // event listeners
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const page = this.dataset.page;
+        if (page && sections[page]) {
+          activatePage(page);
+        } else {
+          // if no page (footer quick links) fallback
+          const fallback = this.getAttribute('data-page');
+          if (fallback && sections[fallback]) activatePage(fallback);
+        }
+      });
+    });
+
+    // set home active by default (already active in html)
+    // if any link with active class from html, ensure home is active
+    const activeLink = document.querySelector('.nav-links a.active');
+    if (activeLink) {
+      const page = activeLink.dataset.page;
+      if (page && sections[page]) {
+        Object.values(sections).forEach(s => s.classList.remove('active'));
+        sections[page].classList.add('active');
+      }
+    } else {
+      // fallback
+      activatePage('home');
+    }
+  })();
+</script>
+
+<!-- additional microdata / professional touch -->
+<div style="display:none;">
+  <span itemscope itemtype="https://schema.org/RealEstateAgent">
+    <span itemprop="name">ANVI REALTORS</span>
+    <span itemprop="telephone">9022216667</span>
+    <span itemprop="email">anvirealtorsdata@gmail.com</span>
+    <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+      <span itemprop="streetAddress">Room No 202 C Wing, Samarth Nagar, Shree Stapatya Apt, Diva Mumbra Devi Colony Road</span>
+      <span itemprop="addressLocality">Diva East</span>
+      <span itemprop="addressRegion">Maharashtra</span>
+      <span itemprop="postalCode">400612</span>
+    </span>
+  </span>
+</div>
+</body>
+</html>
